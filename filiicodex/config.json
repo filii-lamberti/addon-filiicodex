@@ -17,5 +17,6 @@
     "purge": "bool?",
     "logging": "bool?",
     "debugging": "bool?"
-  }
+  },
+  "image": "filii/filiicodex-{arch}"
 }
