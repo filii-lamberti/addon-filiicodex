@@ -1,0 +1,13 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Filii Lamberti Home Assistant Add-ons: FiliiCodex
+# Starts the FiliiCodex
+# ==============================================================================
+
+# Set the current working dir to /opt
+cd /opt/filiicodex || bashio::exit.nok "Could not change directory to FiliiCodex"
+
+bashio::log.info "Starting FiliiCodex..."
+
+# And finally start the FiliiCodex
+exec node index.js
