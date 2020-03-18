@@ -63,3 +63,8 @@ typings/
 
 # next.js build output
 .next
+
+# enmap sqlite database file
+filiicodex/rootfs/opt/filiicodex/data/enmap.sqlite*
+
+\.vscode/
