@@ -1,0 +1,17 @@
+image: node
+
+stages:
+  - lint
+
+eslint:
+  stage: lint
+  script:
+    # Install ESLint
+    - |
+      npm install eslint \
+      eslint-config-airbnb \
+      eslint-plugin-import \
+      eslint-plugin-jsx-a11y \
+      eslint-plugin-react
+    # Run ESLint
+    - node_modules/eslint/bin/eslint.js index.js

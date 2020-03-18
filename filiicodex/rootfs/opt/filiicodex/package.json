@@ -1,0 +1,35 @@
+{
+  "name": "filiicodex",
+  "version": "2.4.0",
+  "description": "Node.js app voor de Filii codex",
+  "author": "Filii Lamberti",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "better-sqlite-pool": "^0.2.3",
+    "enmap": "^5.2.4",
+    "express": "^4.17.1",
+    "fuse.js": "^3.6.1",
+    "xml2js": "^0.4.23"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/filii-lamberti/filiicodex_nodejs.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/filii-lamberti/filiicodex_nodejs/issues"
+  },
+  "homepage": "https://gitlab.com/filii-lamberti/filiicodex_nodejs#readme"
+}
