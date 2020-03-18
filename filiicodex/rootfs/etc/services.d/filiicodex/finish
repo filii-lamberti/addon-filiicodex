@@ -1,7 +1,7 @@
 #!/usr/bin/execlineb -S0
 # ==============================================================================
-# Filii Lamberti Home Assistant Add-ons: FiliiCodex
-# Take down the S6 supervision tree when FiliiCodex fails
+# Filii Lamberti Home Assistant Add-ons: Filiicodex
+# Take down the S6 supervision tree when Filiicodex fails
 # ==============================================================================
 if -n { s6-test $# -ne 0 }
 if -n { s6-test ${1} -eq 256 }
