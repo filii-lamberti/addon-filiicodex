@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "better-sqlite-pool": "^0.2.3",
+    "enmap": "^5.2.4",
     "express": "^4.17.1",
     "fuse.js": "^3.6.1",
     "xml2js": "^0.4.23"
