@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+
+  pull_request:
+    branches: [master]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./filiicodex/rootfs/opt/filiicodex
+      # Install ESLint
+      - run: |
+          npm install eslint \
+          eslint-config-airbnb \
+          eslint-plugin-import \
+          eslint-plugin-jsx-a11y \
+          eslint-plugin-react
+        working-directory: ./filiicodex/rootfs/opt/filiicodex
+      # Run ESLint
+      - run: node_modules/eslint/bin/eslint.js index.js
+        working-directory: ./filiicodex/rootfs/opt/filiicodex
+
+  docker:
+    needs: lint
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test docker build
+        run: docker run --rm --privileged -v ~/.docker:/root/.docker -v /var/run/docker.sock:/var/run/docker.sock -v "$(pwd)":/data homeassistant/amd64-builder --target filiicodex --amd64 --test
+      - name: Build and push Docker image
+        run: docker run --rm --privileged -v ~/.docker:/root/.docker -v /var/run/docker.sock:/var/run/docker.sock -v "$(pwd)":/data homeassistant/amd64-builder --target filiicodex --all --docker-user ${{ secrets.DOCKER_USERNAME }} --docker-password ${{ secrets.DOCKER_PASSWORD }}
