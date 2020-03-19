@@ -17,19 +17,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - name: Install dependencies
+      - name: Install ESLint and dependencies
         run: npm ci
         working-directory: ./filiicodex/rootfs/opt/filiicodex
-      # Install ESLint
-      - run: |
-          npm install eslint \
-          eslint-config-airbnb \
-          eslint-plugin-import \
-          eslint-plugin-jsx-a11y \
-          eslint-plugin-react
-        working-directory: ./filiicodex/rootfs/opt/filiicodex
-      # Run ESLint
-      - run: node_modules/eslint/bin/eslint.js index.js
+      - name: Run ESLint
+        run: node_modules/eslint/bin/eslint.js index.js
         working-directory: ./filiicodex/rootfs/opt/filiicodex
 
   docker:
