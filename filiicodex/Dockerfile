@@ -6,7 +6,10 @@ FROM ${BUILD_FROM}
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Copy root filesystem
-COPY rootfs /
+COPY rootfs/etc /etc/
+COPY rootfs/opt/filiicodex/package-lock.json \
+    rootfs/opt/filiicodex/package.json \
+    /opt/filiicodex/
 
 # Setup base
 # hadolint ignore=DL3003
@@ -28,6 +31,8 @@ RUN \
     && npm cache clear --force \
     \
     && apk del --no-cache --purge .build-dependencies
+
+COPY rootfs/opt/filiicodex/index.js /opt/filiicodex/
 
 # Build arugments
 ARG BUILD_ARCH
