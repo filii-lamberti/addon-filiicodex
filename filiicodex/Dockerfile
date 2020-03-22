@@ -12,8 +12,7 @@ COPY rootfs /
 # hadolint ignore=DL3003
 RUN \
     apk add --no-cache --virtual .build-dependencies \
-        g++=9.2.0-r3 \
-        make=4.2.1-r2 \
+        build-base=0.5-r1 \
         python2=2.7.16-r3 \
     \
     && apk add --no-cache \
