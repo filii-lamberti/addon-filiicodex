@@ -1,6 +1,6 @@
 {
   "name": "Filiicodex",
-  "version": "4.0.0",
+  "version": "dev",
   "slug": "filiicodex",
   "description": "A Filiicodex add-on for Home Assistant",
   "url": "https://gitlab.com/filii-lamberti/addon-filiicodex",
