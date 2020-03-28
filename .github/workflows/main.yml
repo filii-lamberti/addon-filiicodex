@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: "12.x"
       - name: Install ESLint and dependencies
-        run: npm ci
+        run: yarn install
         working-directory: ./filiicodex/rootfs/opt/filiicodex
       - name: Run ESLint
         run: node_modules/eslint/bin/eslint.js index.js
