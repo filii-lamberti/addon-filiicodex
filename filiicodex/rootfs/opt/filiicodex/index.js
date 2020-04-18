@@ -103,7 +103,6 @@ const Fuse = require('fuse.js');
 // Fuse options
 const fuseOptions = {
   default: {
-    id: 'id',
     includeScore: true,
     keys: [
       'title',
