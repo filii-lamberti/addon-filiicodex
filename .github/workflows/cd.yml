@@ -1,68 +1,18 @@
-name: Continuous integration and deployment
+name: Continuous deployment
 
 on:
   push:
-    # Sequence of patterns matched against refs/heads
-    branches: [master]
     # Sequence of patterns matched against refs/tags
     tags: [v*]
 
-  pull_request:
-    branches: [master]
-
 jobs:
-  lint:
-    name: Lint code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
-      - name: Install ESLint and dependencies
-        run: yarn install
-        working-directory: ./filiicodex/rootfs/opt/filiicodex
-      - name: Run ESLint
-        run: node_modules/eslint/bin/eslint.js index.js
-        working-directory: ./filiicodex/rootfs/opt/filiicodex
-
-  test:
-    needs: lint
-    name: Test code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Test docker build
-        run: |
-          docker run --rm --privileged \
-            -v ~/.docker:/root/.docker \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            -v "$(pwd)":/data homeassistant/amd64-builder \
-            --target filiicodex --amd64 --test
-
   build:
-    needs: test
     name: Build image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build and push latest Docker image
-        if: github.event_name == 'push'
-        run: |
-          sed -i "s/dev/latest/g" filiicodex/config.json
-          docker run --rm --privileged \
-            -v ~/.docker:/root/.docker \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            -v "$(pwd)":/data homeassistant/amd64-builder \
-            --target filiicodex --all \
-            --docker-user ${{ secrets.DOCKER_USERNAME }} \
-            --docker-password ${{ secrets.DOCKER_PASSWORD }}
       - name: Build and push tagged Docker image
-        if: startsWith(github.ref, 'refs/tags/v')
         run: |
           ADDON_VERSION=$( cut -c12- <<< ${{ github.ref }} )
           sed -i "s/latest/$ADDON_VERSION/g" filiicodex/config.json
@@ -78,7 +28,6 @@ jobs:
     needs: build
     name: Publish release
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     steps:
       - name: Checkout add-on code
         uses: actions/checkout@v2
