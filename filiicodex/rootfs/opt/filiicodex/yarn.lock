@@ -468,10 +468,10 @@ end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-enmap@^5.2.4:
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/enmap/-/enmap-5.2.4.tgz#a4294299ec6f7b0143aadc09a17f5a8ef84510e1"
-  integrity sha512-YulKPmB3t08i1aBDBDgEew9gAWYWXVuGe8S3DLYRQ+E0FoVxTTzo2iSfcEmUX9DRLuKLDMRLRcbRqX5J0z55Uw==
+enmap@^5.2.9:
+  version "5.2.9"
+  resolved "https://registry.yarnpkg.com/enmap/-/enmap-5.2.9.tgz#7c8eebef1ee35f212e2a5643277b2312f60765c4"
+  integrity sha512-PoZU4WQT9+JH4Lq2ImfR8NiGZvWqCJAI58PSyMbT4Whg3khC+vFAXsP4rJfeduOYEFUf19itCtvK5AqcxNAdZQ==
   dependencies:
     lodash "^4.17.15"
 
