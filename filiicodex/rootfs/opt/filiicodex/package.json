@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
-    "better-sqlite3": "^7.0.1",
+    "better-sqlite3": "^7.1.0",
     "enmap": "^5.2.9",
     "express": "^4.17.1",
     "fuse.js": "^6.0.3",
