@@ -441,10 +441,10 @@ end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-enmap@^5.3.1:
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/enmap/-/enmap-5.3.1.tgz#147d44fc2dd7ded7f0a4c841618f239573be833d"
-  integrity sha512-s/tJwhUWebf7Scip9RyOY0hzOUKfqab3CdcSr+Dkn5Z8qKtIoIsS8hKqWnYvSYZXVBKP2WIzaBWn+0qRXWNYhA==
+enmap@^5.3.2:
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/enmap/-/enmap-5.3.2.tgz#38c87c046ce12a039538d435ea727f2669af9629"
+  integrity sha512-xTS2T2ye+U3g9yE7V9qzZ670U6bSYf6loIdHY8z2dLemN6NhnlUb7+j+Rh1W5hydi0Z2VfyJ7k5srw2VBpw7/A==
   dependencies:
     lodash "^4.17.15"
     on-change "^2.0.1"
