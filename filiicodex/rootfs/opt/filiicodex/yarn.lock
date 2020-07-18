@@ -441,12 +441,12 @@ end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   dependencies:
     once "^1.4.0"
 
-enmap@^5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/enmap/-/enmap-5.3.2.tgz#38c87c046ce12a039538d435ea727f2669af9629"
-  integrity sha512-xTS2T2ye+U3g9yE7V9qzZ670U6bSYf6loIdHY8z2dLemN6NhnlUb7+j+Rh1W5hydi0Z2VfyJ7k5srw2VBpw7/A==
+enmap@^5.3.3:
+  version "5.3.3"
+  resolved "https://registry.yarnpkg.com/enmap/-/enmap-5.3.3.tgz#a9919f81383356ab3c1694b2afc09a96aa62fe47"
+  integrity sha512-N4qIyKQmy7/A68Z6W9UfKhOl/W5QrlMjVd1o4+4GcfdcHvvSyGsGAXTCQLjx7ZJ03Ln6OawAGCrRS8KhYDavPA==
   dependencies:
-    lodash "^4.17.15"
+    lodash "^4.17.19"
     on-change "^2.0.1"
 
 enquirer@^2.3.5:
@@ -1090,7 +1090,7 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash@^4.17.14, lodash@^4.17.15:
+lodash@^4.17.14, lodash@^4.17.19:
   version "4.17.19"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
   integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
