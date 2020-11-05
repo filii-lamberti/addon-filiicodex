@@ -22,7 +22,7 @@ RUN \
         yarn=1.22.4-r0 \
     \
     && apk add --no-cache \
-        nodejs=12.15.0-r1 \
+        nodejs=12.18.4-r0 \
     \
     && cd /opt/filiicodex \
     \
