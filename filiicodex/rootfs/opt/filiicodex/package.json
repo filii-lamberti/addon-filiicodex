@@ -6,7 +6,7 @@
   "author": "Filii Lamberti",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^0.23.0",
     "better-sqlite3": "^7.4.3",
     "enmap": "^5.8.7",
     "express": "^4.17.1",
