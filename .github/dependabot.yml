@@ -4,14 +4,11 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-  open-pull-requests-limit: 10
-- package-ecosystem: npm
-  directory: "/filiicodex/rootfs/opt/filiicodex"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
 - package-ecosystem: docker
   directory: "/filiicodex"
   schedule:
     interval: daily
-  open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: "/filiicodex/rootfs/opt/filiicodex"
+  schedule:
+    interval: daily
