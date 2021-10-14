@@ -9,7 +9,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 COPY rootfs/etc /etc/
 COPY \
     rootfs/opt/filiicodex/package.json \
-    rootfs/opt/filiicodex/yarn.lock \
+    rootfs/opt/filiicodex/package-lock.json \
     /opt/filiicodex/
 
 # Setup base
@@ -19,24 +19,16 @@ RUN \
         build-base=0.5-r2 \
         npm=12.18.4-r0 \
         python2=2.7.18-r0 \
-        yarn=1.22.4-r0 \
     \
     && apk add --no-cache \
         nodejs=12.18.4-r0 \
     \
     && cd /opt/filiicodex \
     \
-    && yarn global add modclean \
-    && yarn --production \
+    && npm install --production \
     \
-    && modclean \
-        --path /opt/filiicodex \
-        --no-progress \
-        --keep-empty \
-        --run \
-    \
-    && yarn global remove modclean \
-    && yarn cache clean \
+    && npx mod-pruner init --force \
+    && npx mod-pruner prune --force \
     \
     && apk del --no-cache --purge .build-dependencies
 
