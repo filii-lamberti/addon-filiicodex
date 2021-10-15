@@ -12,17 +12,24 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2.3.4
-      - name: Build and push tagged Docker image
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1.10.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set add-on version
         run: |
           ADDON_VERSION=$( cut -c12- <<< ${{ github.ref }} )
           sed -i "s/dev/$ADDON_VERSION/g" filiicodex/config.json
-          docker run --rm --privileged \
-            -v ~/.docker:/root/.docker \
-            -v /var/run/docker.sock:/var/run/docker.sock \
-            -v "$(pwd)":/data homeassistant/amd64-builder \
-            --target filiicodex --all \
-            --docker-user ${{ secrets.DOCKER_USERNAME }} \
-            --docker-password ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push tagged Docker image
+        uses: home-assistant/builder@2021.09.0
+        with:
+          args: |
+            --all \
+            --target filiicodex \
+            --image "filiicodex/{arch}" \
+            --docker-hub "ghcr.io/filii-lamberti"
 
   publish:
     needs: build
