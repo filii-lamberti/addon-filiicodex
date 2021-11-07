@@ -16,6 +16,7 @@ homeassistant_api: true
 ports:
   3000/tcp: 8051 # C+O+D+E+X
 options:
+  purge: false
 schema:
   purge: bool?
   logging: bool?
