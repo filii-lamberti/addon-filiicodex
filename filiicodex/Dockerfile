@@ -9,7 +9,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 COPY rootfs/etc /etc/
 COPY \
     rootfs/opt/filiicodex/package.json \
-    rootfs/opt/filiicodex/yarn.lock \
+    rootfs/opt/filiicodex/package-lock.json \
     /opt/filiicodex/
 
 # Setup base
@@ -18,7 +18,7 @@ RUN \
     apk add --no-cache --virtual .build-dependencies \
         build-base=0.5-r2 \
         npm=7.17.0-r0 \
-        python2=2.7.18-r0 \
+        python3=3.9.5-r1 \
     \
     && apk add --no-cache \
         nodejs=14.18.1-r0 \
