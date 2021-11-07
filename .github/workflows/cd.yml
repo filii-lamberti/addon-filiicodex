@@ -10,3 +10,5 @@ jobs:
     uses: filii-lamberti/repository/.github/workflows/cd.yml@main
     with:
       addon: filiicodex
+    secrets:
+      token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
