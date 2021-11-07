@@ -3,58 +3,12 @@ name: Continuous integration
 on:
   push:
     # Sequence of patterns matched against refs/heads
-    branches: [master]
+    branches:
+      - master
+      - develop
 
 jobs:
-  lint:
-    name: Lint code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2.4.0
-      - name: Use Node.js
-        uses: actions/setup-node@v2.4.1
-        with:
-          node-version: '14'
-          cache: 'npm'
-          cache-dependency-path: ./filiicodex/rootfs/opt/filiicodex/package-lock.json
-      - name: Install ESLint and dependencies
-        run: npm install
-        working-directory: ./filiicodex/rootfs/opt/filiicodex
-      - name: Run ESLint
-        run: node_modules/eslint/bin/eslint.js index.js
-        working-directory: ./filiicodex/rootfs/opt/filiicodex
-
-  test:
-    needs: lint
-    name: Test code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2.4.0
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1.10.0
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set add-on version
-        run: |
-          sed -i "s/dev/latest/g" filiicodex/config.json
-      - name: Build and push latest Docker image
-        uses: home-assistant/builder@2021.09.0
-        with:
-          args: |
-            --amd64 \
-            --target filiicodex \
-            --image "filiicodex/{arch}" \
-            --docker-hub "ghcr.io/filii-lamberti"
-
-  update_release_draft:
-    name: Release Drafter
-    runs-on: ubuntu-latest
-    steps:
-      # Drafts your next Release notes as Pull Requests are merged into "master"
-      - uses: release-drafter/release-drafter@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  continuous-integration:
+    uses: filii-lamberti/repository/.github/workflows/ci.yml@main
+    with:
+      addon: filiicodex

@@ -6,62 +6,7 @@ on:
     tags: [v*]
 
 jobs:
-  build:
-    name: Build image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2.4.0
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1.10.0
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set add-on version
-        run: |
-          ADDON_VERSION=$( cut -c12- <<< ${{ github.ref }} )
-          sed -i "s/dev/$ADDON_VERSION/g" filiicodex/config.json
-      - name: Build and push tagged Docker image
-        uses: home-assistant/builder@2021.09.0
-        with:
-          args: |
-            --all \
-            --target filiicodex \
-            --image "filiicodex/{arch}" \
-            --docker-hub "ghcr.io/filii-lamberti"
-
-  publish:
-    needs: build
-    name: Publish release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout add-on code
-        uses: actions/checkout@v2.4.0
-        with:
-          persist-credentials: false
-          path: addon
-      - name: Checkout repository code
-        uses: actions/checkout@v2.4.0
-        with:
-          persist-credentials: false
-          repository: filii-lamberti/repository
-          path: repository
-      - name: Create local changes and commit files
-        continue-on-error: true
-        run: |
-          ADDON_NAME=$( cut -c22- <<< ${{ github.repository }} )
-          ADDON_VERSION=$( cut -c12- <<< ${{ github.ref }} )
-          cp -v addon/README.md addon/filiicodex/config.json repository/filiicodex/
-          cd repository
-          sed -i "s/dev/$ADDON_VERSION/g" filiicodex/config.json
-          git config --local user.email "filii.lamberti@gmail.com"
-          git config --local user.name "Filii Lamberti"
-          git add .
-          git commit -m "Upgrade $ADDON_NAME to v$ADDON_VERSION" -a
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          directory: repository
-          repository: filii-lamberti/repository
+  continuous-deployment:
+    uses: filii-lamberti/repository/.github/workflows/cd.yml@main
+    with:
+      addon: filiicodex

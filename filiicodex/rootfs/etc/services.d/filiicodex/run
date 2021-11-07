@@ -4,7 +4,7 @@
 # Starts the Filiicodex
 # ==============================================================================
 
-# Set the current working dir to /opt
+# Set the current working dir to /opt/filiicodex
 cd /opt/filiicodex || bashio::exit.nok "Could not change directory to Filiicodex"
 
 bashio::log.info "Starting Filiicodex..."
