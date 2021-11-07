@@ -14,7 +14,7 @@ arch:
 hassio_api: true
 homeassistant_api: true
 ports:
-  3000/tcp: 8215
+  3000/tcp: 8051 # C+O+D+E+X
 options:
 schema:
   purge: bool?
