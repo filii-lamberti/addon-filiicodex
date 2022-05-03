@@ -10,7 +10,7 @@
     "better-sqlite3": "^7.5.1",
     "enmap": "^5.8.13",
     "express": "^4.17.3",
-    "fuse.js": "^6.5.3",
+    "fuse.js": "^6.6.0",
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
