@@ -8,7 +8,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "better-sqlite3": "^8.4.0",
-    "enmap": "^5.9.5",
+    "enmap": "^5.9.8",
     "express": "^4.18.2",
     "fuse.js": "^6.6.2",
     "xml2js": "^0.4.23"
